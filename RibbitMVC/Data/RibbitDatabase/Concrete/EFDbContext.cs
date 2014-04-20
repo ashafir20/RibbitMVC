@@ -9,10 +9,11 @@ namespace RibbitMVC.Data.RibbitDatabase.Concrete
 {
     public class EFDbContext : DbContext
     {
+        public EFDbContext() : base("EFDbContext") { }
+
         public DbSet<User> Users { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Ribbit> Ribbits { get; set; }
-
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

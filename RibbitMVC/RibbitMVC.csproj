@@ -114,7 +114,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\RibbitDatabase\Abstract\IRepository.cs" />
+    <Compile Include="Data\RibbitDatabase\Abstract\IUserRepository.cs" />
     <Compile Include="Data\RibbitDatabase\Concrete\EFDbContext.cs" />
+    <Compile Include="Data\RibbitDatabase\Concrete\EfRepository.cs" />
+    <Compile Include="Data\RibbitDatabase\Abstract\IRibbitRepository.cs" />
+    <Compile Include="Data\RibbitDatabase\Concrete\RibbitRepository.cs" />
+    <Compile Include="Data\RibbitDatabase\Concrete\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,7 +146,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Data\RibbitDatabase\Abstract\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
