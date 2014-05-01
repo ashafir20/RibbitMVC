@@ -1,11 +1,12 @@
-﻿using RibbitMVC.Data.RibbitDatabase.Abstract;
+﻿using System.Data.Entity;
+using RibbitMVC.Data.RibbitDatabase.Abstract;
 using RibbitMVC.Models;
 
 namespace RibbitMVC.Data.RibbitDatabase.Concrete
 {
     public class UserRepository : EfRepository<User>, IUserRepository
     {
-        public UserRepository(EFDbContext context, bool sharedContext) : base(context, sharedContext) {}
+        public UserRepository(DbContext context, bool sharedContext) : base(context, sharedContext) {}
 
         public User GetBy(int id)
         {

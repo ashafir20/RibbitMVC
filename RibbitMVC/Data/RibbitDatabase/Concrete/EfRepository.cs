@@ -2,8 +2,6 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Runtime.Remoting.Contexts;
-using System.Web.UI;
 using RibbitMVC.Data.RibbitDatabase.Abstract;
 
 namespace RibbitMVC.Data.RibbitDatabase.Concrete
@@ -11,15 +9,15 @@ namespace RibbitMVC.Data.RibbitDatabase.Concrete
     public class EfRepository<T> : IRepository<T>
         where T : class
     {
-        protected EFDbContext Context;
-        protected readonly bool ShareContext;
+        protected DbContext Context;
+        protected readonly bool SharedContext;
 
-        public EfRepository(EFDbContext context) : this(context, false) { }
+        public EfRepository(DbContext context) : this(context, false) { }
 
-        public EfRepository(EFDbContext context, bool sharedContext)
+        public EfRepository(DbContext context, bool sharedContext)
         {
             Context = context;
-            ShareContext = sharedContext;
+            SharedContext = sharedContext;
         }
 
         protected DbSet<T> DbSet
@@ -45,7 +43,7 @@ namespace RibbitMVC.Data.RibbitDatabase.Concrete
         public T Create(T t)
         {
             DbSet.Add(t);
-            if (!ShareContext)
+            if (!SharedContext)
             {
                 Context.SaveChanges();
             }
@@ -55,7 +53,7 @@ namespace RibbitMVC.Data.RibbitDatabase.Concrete
         public int Delete(T t)
         {
             DbSet.Remove(t);
-            if (!ShareContext)
+            if (!SharedContext)
             {
                 Context.SaveChanges();
             }
@@ -69,7 +67,7 @@ namespace RibbitMVC.Data.RibbitDatabase.Concrete
             {
                 DbSet.Remove(record);
             }
-            if (!ShareContext)
+            if (!SharedContext)
             {
                 Context.SaveChanges();
             }
@@ -118,7 +116,7 @@ namespace RibbitMVC.Data.RibbitDatabase.Concrete
             
             entry.State = EntityState.Modified;
 
-            if (!ShareContext)
+            if (!SharedContext)
             {
                 return Context.SaveChanges();
             }
@@ -128,16 +126,13 @@ namespace RibbitMVC.Data.RibbitDatabase.Concrete
 
         public void Dispose()
         {
-            if (!ShareContext && Context != null)
+            if (!SharedContext && Context != null)
             {
                 try
                 {
                     Context.Dispose();
                 }
-                catch
-                {
-
-                }
+                catch { }
             }
         }
     }

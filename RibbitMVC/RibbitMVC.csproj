@@ -114,9 +114,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\RibbitDatabase\Abstract\IContext.cs" />
     <Compile Include="Data\RibbitDatabase\Abstract\IRepository.cs" />
     <Compile Include="Data\RibbitDatabase\Abstract\IUserRepository.cs" />
-    <Compile Include="Data\RibbitDatabase\Concrete\EFDbContext.cs" />
+    <Compile Include="Data\RibbitDatabase\Concrete\Context.cs" />
+    <Compile Include="Data\RibbitDatabase\Concrete\RibbitDatabase.cs" />
     <Compile Include="Data\RibbitDatabase\Concrete\EfRepository.cs" />
     <Compile Include="Data\RibbitDatabase\Abstract\IRibbitRepository.cs" />
     <Compile Include="Data\RibbitDatabase\Concrete\RibbitRepository.cs" />
@@ -128,6 +130,12 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IRibbitService.cs" />
+    <Compile Include="Services\ISecurityService.cs" />
+    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\RibbitService.cs" />
+    <Compile Include="Services\SecurityService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />

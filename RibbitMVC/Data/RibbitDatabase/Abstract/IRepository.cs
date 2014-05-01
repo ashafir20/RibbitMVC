@@ -11,6 +11,8 @@ namespace RibbitMVC.Data.RibbitDatabase.Abstract
 
         bool Any(Expression<Func<T, bool>> predicate);
 
+        T Create(T t);
+
         int Count { get; }
 
         int Delete(T t);

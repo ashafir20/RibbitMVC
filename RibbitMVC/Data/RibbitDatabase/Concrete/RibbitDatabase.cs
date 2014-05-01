@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 using RibbitMVC.Models;
 
 namespace RibbitMVC.Data.RibbitDatabase.Concrete
 {
-    public class EFDbContext : DbContext
+    public class RibbitDatabase : DbContext
     {
-        public EFDbContext() : base("EFDbContext") { }
+        public RibbitDatabase() : base("RibbitConnection") { }
 
         public DbSet<User> Users { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }

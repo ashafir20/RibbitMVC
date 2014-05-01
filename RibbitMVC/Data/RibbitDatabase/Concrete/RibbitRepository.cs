@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using RibbitMVC.Models;
 
@@ -6,7 +7,7 @@ namespace RibbitMVC.Data.RibbitDatabase.Concrete
 {
     public class RibbitRepository : EfRepository<Ribbit>, IRibbitRepository
     {
-        public RibbitRepository(EFDbContext context, bool sharedContext) 
+        public RibbitRepository(DbContext context, bool sharedContext)
             : base(context, sharedContext) { }
  
         public Ribbit GetBy(int id)
@@ -23,7 +24,7 @@ namespace RibbitMVC.Data.RibbitDatabase.Concrete
         {
             user.Ribbits.Add(ribbit);
 
-            if (!ShareContext)
+            if (!SharedContext)
             {
                 Context.SaveChanges();
             }
