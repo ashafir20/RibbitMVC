@@ -17,7 +17,7 @@ namespace RibbitMVC.Services
 
         public Ribbit GetBy(int id)
         {
-            _ribbits.GetBy(id);
+           return  _ribbits.GetBy(id);
         }
 
         public Ribbit Create(User user, string status, DateTime? created = null)

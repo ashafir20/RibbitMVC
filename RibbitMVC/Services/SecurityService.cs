@@ -46,6 +46,11 @@ namespace RibbitMVC.Services
             return _users.GetBy(username) != null;
         }
 
+        public User GetCurrentUser()
+        {
+            return _users.GetBy(UserId);
+        }
+
         public bool IsAuthenticated
         {
             get { return UserId > 0; }

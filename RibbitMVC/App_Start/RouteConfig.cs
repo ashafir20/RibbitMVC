@@ -44,8 +44,26 @@ namespace RibbitMVC
                 name: "Create",
                 url: "create",
                 defaults: new { controller = "home", action = "create" }
-             ); 
+             );
 
+
+            routes.MapRoute(
+                name: "Follow",
+                url: "follow",
+                defaults: new { controller = "home", action = "follow" }
+             );
+
+            routes.MapRoute(
+                name: "Unfollow",
+                url: "unfollow",
+                defaults: new { controller = "home", action = "unfollow" }
+             );
+
+            routes.MapRoute(
+                name: "Profiles",
+                url: "profiles",
+                defaults: new { controller = "home", action = "profiles" }
+             ); 
 
             //{username}/{action}
             routes.MapRoute(

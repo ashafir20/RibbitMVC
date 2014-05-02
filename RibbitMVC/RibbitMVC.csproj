@@ -114,6 +114,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\RibbitControllerBase.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\RibbitDatabase\Abstract\IContext.cs" />
     <Compile Include="Data\RibbitDatabase\Abstract\IRepository.cs" />
     <Compile Include="Data\RibbitDatabase\Abstract\IUserRepository.cs" />
@@ -153,7 +158,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

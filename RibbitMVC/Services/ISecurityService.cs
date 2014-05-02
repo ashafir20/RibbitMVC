@@ -7,6 +7,7 @@ namespace RibbitMVC.Services
         bool Authenticate(string username, string password);
         User CreateUser(string username, string password, bool login = true);
         bool DoesUserExists(string username);
+        User GetCurrentUser();
         bool IsAuthenticated { get; }
         void Login(User user);
         void Login(string username);
