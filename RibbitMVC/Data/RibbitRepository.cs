@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using RibbitMvc.Models;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using RibbitMVC.Models;
+using System.Web;
 
-namespace RibbitMVC.Data.RibbitDatabase.Concrete
+namespace RibbitMvc.Data
 {
     public class RibbitRepository : EfRepository<Ribbit>, IRibbitRepository
     {
         public RibbitRepository(DbContext context, bool sharedContext)
             : base(context, sharedContext) { }
- 
+
         public Ribbit GetBy(int id)
         {
             return Find(r => r.Id == id);
@@ -24,7 +26,7 @@ namespace RibbitMVC.Data.RibbitDatabase.Concrete
         {
             user.Ribbits.Add(ribbit);
 
-            if (!SharedContext)
+            if (!ShareContext)
             {
                 Context.SaveChanges();
             }

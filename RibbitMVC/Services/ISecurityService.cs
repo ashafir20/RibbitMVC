@@ -1,12 +1,13 @@
-﻿using RibbitMVC.Models;
+﻿using RibbitMvc.Models;
+using RibbitMvc.ViewModel;
 
-namespace RibbitMVC.Services
+namespace RibbitMvc.Services
 {
     public interface ISecurityService
     {
         bool Authenticate(string username, string password);
-        User CreateUser(string username, string password, bool login = true);
-        bool DoesUserExists(string username);
+        User CreateUser(SignupViewModel signupModel, bool login = true);
+        bool DoesUserExist(string username);
         User GetCurrentUser();
         bool IsAuthenticated { get; }
         void Login(User user);
@@ -15,4 +16,3 @@ namespace RibbitMVC.Services
         int UserId { get; set; }
     }
 }
- 

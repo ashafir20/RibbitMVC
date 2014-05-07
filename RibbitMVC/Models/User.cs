@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
 
-namespace RibbitMVC.Models
+namespace RibbitMvc.Models
 {
     public class User
     {
@@ -11,8 +13,9 @@ namespace RibbitMVC.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public DateTime DateCreated { get; set; }
-        public int UserProfileId { get; set; }
 
+        public int UserProfileId { get; set; }
+        
         [ForeignKey("UserProfileId")]
         public virtual UserProfile Profile { get; set; }
 
@@ -23,11 +26,11 @@ namespace RibbitMVC.Models
             set { _ribbits = value; }
         }
 
-        private ICollection<User> _following;
-        public virtual ICollection<User> Following
+        private ICollection<User> _followings;
+        public virtual ICollection<User> Followings
         {
-            get { return _following ?? (_following = new Collection<User>()); }
-            set { _following = value; }
+            get { return _followings ?? (_followings = new Collection<User>()); }
+            set { _followings = value; }
         }
 
         private ICollection<User> _followers;

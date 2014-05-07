@@ -119,15 +119,17 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RibbitControllerBase.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Data\RibbitDatabase\Abstract\IContext.cs" />
-    <Compile Include="Data\RibbitDatabase\Abstract\IRepository.cs" />
-    <Compile Include="Data\RibbitDatabase\Abstract\IUserRepository.cs" />
-    <Compile Include="Data\RibbitDatabase\Concrete\Context.cs" />
-    <Compile Include="Data\RibbitDatabase\Concrete\RibbitDatabase.cs" />
-    <Compile Include="Data\RibbitDatabase\Concrete\EfRepository.cs" />
-    <Compile Include="Data\RibbitDatabase\Abstract\IRibbitRepository.cs" />
-    <Compile Include="Data\RibbitDatabase\Concrete\RibbitRepository.cs" />
-    <Compile Include="Data\RibbitDatabase\Concrete\UserRepository.cs" />
+    <Compile Include="Data\Context.cs" />
+    <Compile Include="Data\EfRepository.cs" />
+    <Compile Include="Data\IContext.cs" />
+    <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\IRibbitRepository.cs" />
+    <Compile Include="Data\IUserProfileRepository.cs" />
+    <Compile Include="Data\IUserRepository.cs" />
+    <Compile Include="Data\RibbitDatabase.cs" />
+    <Compile Include="Data\RibbitRepository.cs" />
+    <Compile Include="Data\UserProfileRepository.cs" />
+    <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,16 +139,48 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IRibbitService.cs" />
     <Compile Include="Services\ISecurityService.cs" />
+    <Compile Include="Services\IUserProfileService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\RibbitService.cs" />
     <Compile Include="Services\SecurityService.cs" />
+    <Compile Include="Services\UserProfileService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Ui\RibbitViewPage.cs" />
+    <Compile Include="ViewModel\BuddiesViewModel.cs" />
+    <Compile Include="ViewModel\CreateRibbitViewModel.cs" />
+    <Compile Include="ViewModel\EditProfileViewModel.cs" />
+    <Compile Include="ViewModel\LoginSignupViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\SignupViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="gfx\bg-button.png" />
+    <Content Include="gfx\bg-footer.png" />
+    <Content Include="gfx\bg-header.png" />
+    <Content Include="gfx\bg.png" />
+    <Content Include="gfx\frog.jpg" />
+    <Content Include="gfx\logo-nettuts.png" />
+    <Content Include="gfx\logo.png" />
+    <Content Include="gfx\user1.png" />
+    <Content Include="gfx\user2.png" />
+    <Content Include="gfx\user3.png" />
     <Content Include="Global.asax" />
+    <Content Include="less.js" />
+    <Content Include="style.css">
+      <DependentUpon>style.less</DependentUpon>
+    </Content>
+    <Content Include="Views\Shared\Landing.cshtml" />
+    <Content Include="Views\Shared\Buddies.cshtml" />
+    <Content Include="Views\Shared\_CreateRibbitPartial.cshtml" />
+    <Content Include="Views\Shared\_FollowButtonPartial.cshtml" />
+    <Content Include="Views\Home\Profiles.cshtml" />
+    <Content Include="Views\Home\Timeline.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -155,12 +189,25 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_UserProfilePartial.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_RibbitPartial.cshtml" />
+    <Content Include="Views\Shared\_UserPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="style.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="style.css.map">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

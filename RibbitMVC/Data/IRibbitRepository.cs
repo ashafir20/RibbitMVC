@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
-using RibbitMVC.Data.RibbitDatabase.Abstract;
-using RibbitMVC.Models;
+﻿using RibbitMvc.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace RibbitMVC.Data.RibbitDatabase.Concrete
+namespace RibbitMvc.Data
 {
     public interface IRibbitRepository : IRepository<Ribbit>
     {

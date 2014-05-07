@@ -1,19 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
+
+using RibbitMvc.Models;
 using System.Web.Helpers;
 using System.Web.SessionState;
-using RibbitMVC.Models;
+using RibbitMvc.ViewModel;
 
-namespace RibbitMVC.Services
+namespace RibbitMvc.Services
 {
     public class SecurityService : ISecurityService
     {
         private readonly IUserService _users;
         private readonly HttpSessionState _session;
 
-        public SecurityService(IUserService userService, HttpSessionState session = null)
+        public SecurityService(IUserService users, HttpSessionState session = null)
         {
-            _users = userService;
+            _users = users;
             _session = session ?? HttpContext.Current.Session;
         }
 
@@ -21,7 +25,7 @@ namespace RibbitMVC.Services
         {
             var user = _users.GetBy(username);
 
-            if(user == null)
+            if (user == null)
             {
                 return false;
             }
@@ -29,9 +33,12 @@ namespace RibbitMVC.Services
             return Crypto.VerifyHashedPassword(user.Password, password);
         }
 
-        public User CreateUser(string username, string password, bool login = true)
+        public User CreateUser(SignupViewModel signupModel, bool login = true)
         {
-            var user = _users.Create(username, password, new UserProfile());
+            var user = _users.Create(signupModel.Username, signupModel.Password, new UserProfile()
+            {
+                Email = signupModel.Email
+            });
 
             if (login)
             {
@@ -41,7 +48,7 @@ namespace RibbitMVC.Services
             return user;
         }
 
-        public bool DoesUserExists(string username)
+        public bool DoesUserExist(string username)
         {
             return _users.GetBy(username) != null;
         }
@@ -53,17 +60,18 @@ namespace RibbitMVC.Services
 
         public bool IsAuthenticated
         {
-            get { return UserId > 0; }
+            get { return UserId > 0;}
         }
 
         public void Login(User user)
         {
-            UserId = user.Id;
+            _session["UserId"] = user.Id;
         }
 
         public void Login(string username)
         {
             var user = _users.GetBy(username);
+
             Login(user);
         }
 
@@ -74,8 +82,14 @@ namespace RibbitMVC.Services
 
         public int UserId
         {
-            get { return Convert.ToInt32(_session["UserId"]); }
-            set { _session["UserId"] = value; }
+            get
+            {
+                return Convert.ToInt32(_session["UserId"]);
+            }
+            set
+            {
+                _session["UserId"] = value;
+            }
         }
     }
 }
